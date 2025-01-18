@@ -106,9 +106,9 @@ def main():
                 
                 # Pemetaan kelas
                 label_map = {
-                    0: "Non-Diabetic (N)",
-                    1: "Diabetic (Y)",
-                    2: "Predicted-Diabetic (P)"
+                    N: "Non-Diabetic (N)",
+                    Y: "Diabetic (Y)",
+                    P: "Predicted-Diabetic (P)"
                 }
                 
                 # Menampilkan hasil prediksi
