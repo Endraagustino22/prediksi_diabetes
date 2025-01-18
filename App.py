@@ -48,17 +48,17 @@ def main():
         st.write("Dataset Preview:")
         st.dataframe(df.head())
 
-    if os.path.exists(word_file_path):
-            # Menampilkan tombol download untuk file Word
-            with open(word_file_path, "rb") as file:
-                st.download_button(
-                    label="Download Dataset Explanation",
-                    data=file,
-                    file_name="Dataset_Explanation.docx",
-                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                )
-        else:
-            st.warning("File penjelasan dataset tidak ditemukan.")
+        if os.path.exists(word_file_path):
+                # Menampilkan tombol download untuk file Word
+                with open(word_file_path, "rb") as file:
+                    st.download_button(
+                        label="Download Dataset Explanation",
+                        data=file,
+                        file_name="Dataset_Explanation.docx",
+                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    )
+            else:
+                st.warning("File penjelasan dataset tidak ditemukan.")
         
         st.header("Model Training and Prediction")
         
