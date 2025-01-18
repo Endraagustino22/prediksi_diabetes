@@ -57,7 +57,7 @@ def main():
                         file_name="Dataset_Explanation.docx",
                         mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                     )
-            else:
+        else:
                 st.warning("File penjelasan dataset tidak ditemukan.")
         
         st.header("Model Training and Prediction")
