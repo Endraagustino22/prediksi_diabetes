@@ -41,7 +41,7 @@ def main():
     st.title("Diabetes Prediction Using Multiple Algorithms")
 
     file_path = "Dataset of Diabetes .csv" #path ke dataset
-    word_file_path = "penjelasan dataser.docx"
+    word_file_path = "penjelasan dataset.docx"
 
     try:
         # Membaca dataset
