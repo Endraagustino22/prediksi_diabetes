@@ -74,16 +74,16 @@ def main():
 
         if model:
             gender = st.selectbox("Gender (M/F)", options=["Male", "Female"])
-            age = st.number_input("AGE (tahun)", max_value=120)
-            urea = st.number_input("Urea (mg/dL)", max_value=150)
+            age = st.number_input("AGE (tahun)")
+            urea = st.number_input("Urea (mg/dL)")
             cr = st.number_input("Cr (Creatinine ratio) ")
-            hba1c = st.number_input("HbA1c Level (%)", max_value=15.0)
-            chol = st.number_input("Chol (Cholesterol)  (mg/dL)", max_value=400)
-            tg = st.number_input("TG (Triglycerides) (mg/dL)", max_value=400)
-            hdl = st.number_input("HDL Cholesterol (mg/dL)", max_value=100)
-            ldl = st.number_input("LDL Cholesterol (mg/dL)", max_value=250)
-            vldl = st.number_input("VLDL Cholesterol (mg/dL)", max_value=100)
-            bmi = st.number_input("BMI", max_value=60.0)
+            hba1c = st.number_input("HbA1c Level (%)")
+            chol = st.number_input("Chol (Cholesterol)  (mg/dL)")
+            tg = st.number_input("TG (Triglycerides) (mg/dL)")
+            hdl = st.number_input("HDL Cholesterol (mg/dL)")
+            ldl = st.number_input("LDL Cholesterol (mg/dL)")
+            vldl = st.number_input("VLDL Cholesterol (mg/dL)")
+            bmi = st.number_input("BMI")
 
             if st.button("Predict"):
                 # Konversi input ke format model
