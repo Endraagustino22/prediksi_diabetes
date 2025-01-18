@@ -48,16 +48,19 @@ def main():
         st.write("Dataset Preview:")
         st.dataframe(df.head())
 
-        st.header("Model Training and Prediction")
-
-    # Menampilkan penjelasan dari file Word
-        word_file_path = "penjelasan dataset.docx"  # Ganti dengan path file Word Anda
-        
-        if os.path.exists(word_file_path):
-            explanation = read_word_file(word_file_path)
-            st.text_area("Explanation", explanation, height=300)
+    if os.path.exists(word_file_path):
+            # Menampilkan tombol download untuk file Word
+            with open(word_file_path, "rb") as file:
+                st.download_button(
+                    label="Download Dataset Explanation",
+                    data=file,
+                    file_name="Dataset_Explanation.docx",
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                )
         else:
             st.warning("File penjelasan dataset tidak ditemukan.")
+        
+        st.header("Model Training and Prediction")
         
         # Input manual untuk prediksi
         st.subheader("Predict Diabetes Class")
