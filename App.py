@@ -104,16 +104,15 @@ def main():
                 # Prediksi dengan model yang dipilih
                 prediction = model.predict(input_data)[0]
                 
-                # Pemetaan kelas
-                label_map = {
-                    N: "Non-Diabetic (N)",
-                    Y: "Diabetic (Y)",
-                    P: "Predicted-Diabetic (P)"
-                }
-                
-                # Menampilkan hasil prediksi
-                predicted_label = label_map.get(prediction, "Unknown")
-                st.write(f"Predicted Class: **{predicted_label}**")
+                if prediction == "N":
+                    st.write("Predicted Class: **Tidak Menderita Diabetes**")
+                elif prediction == "P":
+                    st.write("Predicted Class: **Kemungkinan Besar Menderita Diabetes**")
+                elif prediction == "Y":
+                    st.write("Predicted Class: **Menderita Diabetes**")
+                else:
+                    st.write("Predicted Class: Tidak Diketahui")
+
 
             
     except FileNotFoundError:
