@@ -103,7 +103,18 @@ def main():
 
                 # Prediksi dengan model yang dipilih
                 prediction = model.predict(input_data)[0]
-                st.write(f"Predicted Class: **{prediction}**")
+                
+                # Pemetaan kelas
+                label_map = {
+                    0: "Non-Diabetic (N)",
+                    1: "Diabetic (Y)",
+                    2: "Predicted-Diabetic (P)"
+                }
+                
+                # Menampilkan hasil prediksi
+                predicted_label = label_map.get(prediction, "Unknown")
+                st.write(f"Predicted Class: **{predicted_label}**")
+
             
     except FileNotFoundError:
         st.error(f"Dataset file not found at path: {file_path}. Please check the path and try again.")
