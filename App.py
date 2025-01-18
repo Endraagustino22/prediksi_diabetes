@@ -73,18 +73,22 @@ def main():
             report_df = pd.DataFrame(result['Classification Report']).transpose()
             st.dataframe(report_df)
 
-        # Input manual untuk prediksi dengan Random Forest
-        st.subheader("Predict Diabetes Class (Using Random Forest)")
-        gender = st.selectbox("Gender", options=["Male", "Female"])
-        age = st.number_input("AGE", max_value=120, step=1)
-        urea = st.number_input("Urea", max_value=150, step=1)
-        cr = st.number_input("Cr (Creatinine ratio)", step=0.1)
+        # Input manual untuk prediksi
+        st.subheader("Predict Diabetes Class")
+
+        # Pilih model untuk prediksi
+        model_choice = st.selectbox("Choose Model", options=["Random Forest", "Logistic Regression", "K-Nearest Neighbors"])
+
+        gender = st.selectbox("Gender (M/F)", options=["Male", "Female"])
+        age = st.number_input("AGE (tahun)", max_value=120, step=1)
+        urea = st.number_input("Urea (mg/dL)", max_value=150, step=1)
+        cr = st.number_input("Cr (Creatinine ratio) ", step=0.1)
         hba1c = st.number_input("HbA1c Level (%)", max_value=15.0, step=0.1)
-        chol = st.number_input("Chol (Cholesterol)", max_value=400, step=1)
-        tg = st.number_input("TG (Triglycerides)", max_value=400, step=1)
-        hdl = st.number_input("HDL Cholesterol", max_value=100, step=1)
-        ldl = st.number_input("LDL Cholesterol", max_value=250, step=1)
-        vldl = st.number_input("VLDL Cholesterol", max_value=100, step=1)
+        chol = st.number_input("Chol (Cholesterol)  (mg/dL)", max_value=400, step=1)
+        tg = st.number_input("TG (Triglycerides) (mg/dL)", max_value=400, step=1)
+        hdl = st.number_input("HDL Cholesterol (mg/dL)", max_value=100, step=1)
+        ldl = st.number_input("LDL Cholesterol (mg/dL)", max_value=250, step=1)
+        vldl = st.number_input("VLDL Cholesterol (mg/dL)", max_value=100, step=1)
         bmi = st.number_input("BMI", max_value=60.0, step=0.1)
 
         if st.button("Predict"):
@@ -103,8 +107,8 @@ def main():
                 "BMI": [bmi],
             })
 
-            # Prediksi dengan Random Forest
-            prediction = models["Random Forest"].predict(input_data)[0]
+            # Prediksi dengan model yang dipilih
+            prediction = models[model_choice].predict(input_data)[0]
             st.write(f"Predicted Class: **{prediction}**")
 
     except FileNotFoundError:
