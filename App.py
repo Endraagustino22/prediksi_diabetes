@@ -6,6 +6,16 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
+from docx import Document
+
+
+# Fungsi untuk memuat dan membaca file Word
+def read_word_file(file_path):
+    doc = Document(file_path)
+    text = ""
+    for para in doc.paragraphs:
+        text += para.text + "\n"
+    return text
 
 # Path untuk memuat dan menyimpan model
 model_paths = {
@@ -40,6 +50,15 @@ def main():
 
         st.header("Model Training and Prediction")
 
+    # Menampilkan penjelasan dari file Word
+        word_file_path = "penjelasan dataset.docx"  # Ganti dengan path file Word Anda
+        
+        if os.path.exists(word_file_path):
+            explanation = read_word_file(word_file_path)
+            st.text_area("Explanation", explanation, height=300)
+        else:
+            st.warning("File penjelasan dataset tidak ditemukan.")
+        
         # Input manual untuk prediksi
         st.subheader("Predict Diabetes Class")
 
